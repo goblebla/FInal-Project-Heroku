@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<style>
+form {
+    margin: auto;
+    width: 35%;
+    background-color:rgb(136, 176, 223, 0.6);
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.result {
+    margin: auto;
+    width: 35%;
+    border: 1px solid #ccc;
+}
+
+body {
+  background-image: url("https://cdn.homedit.com/wp-content/uploads/2019/10/Modern-France-house-by-SAOTA.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+p{
+  margin: auto;
+  width: 35%;
+  text-align:center;
+  font-family:Arial, Helvetica, sans-serif
+}
+</style>
+
+<head>
+    <title>Listing Price Predicter Model</title>
+</head>
+<body>
+ <h1 style="margin: auto;width: 35%;text-align:center;font-family:Arial, Helvetica, sans-serif">How much is your home worth?</h1>
+ <p><a href="/visualizations">Behind the scenes</a></p>
+ <div class="login">
+  <form action="{{ url_for('predict')}}" method="POST">
+    <fieldset>
+        <legend>Input values:</legend>
+        Baths:
+        <input name="baths" type="number" step="any" required>
+        <br>
+        <br> Beds:
+        <input name="beds" type="number" step="any" required>
+        <br>
+        <br> Square Footage:
+        <input name="square_feet" type="number" step="any" required>
+        <br>
+        <br> Lot Size:
+        <input name="lot_size" type="number" step="any" required>
+        <br>
+        <br> Westside or Eastside? (West = 1, East = 0):
+        <input name="w_or_e" type="number" step="any" required>
+        <br>
+        <br> Numerical or Alphabetical Street? (Numeral = 1, Alphabetical = 0):
+        <input name="number_or_alphabetical" type="number" step="any" required>
+        <br>
+        <br>
+        <input type="submit">
+    </fieldset>
+  </form>
+  <br>
+  <br>
+ </div>
+ 
+ <div style="margin: auto;text-align: center;width: 35%;border: 1px solid #ccc;background-color:rgb(253, 246, 219);font-family:Arial, Helvetica, sans-serif">
+ {{ prediction_text }}
+ </div>
+ 
+</body>
+</html>
